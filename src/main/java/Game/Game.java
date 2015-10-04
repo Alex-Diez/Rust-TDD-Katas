@@ -1,11 +1,14 @@
 package game;
 
 public class Game {
-    public void rollBall(int point) {
 
+    private int score = 0;
+
+    public void rollBall(int point) {
+        score += point;
     }
 
     public int score() {
-        return 0;
+        return score;
     }
 }
