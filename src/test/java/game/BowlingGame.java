@@ -36,4 +36,15 @@ public class BowlingGame {
         }
         assertThat(game.score(), is(20));
     }
+
+    @Test
+    public void testSpare() throws Exception {
+        game.rollBall(5);
+        game.rollBall(5);
+        game.rollBall(3);
+        for (int i = 0; i < 17; i++) {
+            game.rollBall(0);
+        }
+        assertThat(game.score(), is(16));
+    }
 }
