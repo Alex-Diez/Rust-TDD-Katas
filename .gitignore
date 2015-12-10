@@ -3,3 +3,7 @@ target/
 
 #sublime files
 *.sublime*
+
+#idea files
+.idea/
+*.iml
