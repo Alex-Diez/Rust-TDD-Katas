@@ -1,0 +1,12 @@
+[package]
+name = "tdd-kata"
+version = "0.0.1-SNAPSHOT"
+authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
+
+[lib]
+name = "collections"
+path = "src/collections.rs"
+
+[[test]]
+name = "unit_tests"
+path = "src/tests.rs"
