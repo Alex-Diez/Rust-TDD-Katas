@@ -1,0 +1,26 @@
+pub struct HashMap {
+	size: usize
+}
+
+impl HashMap {
+    
+    pub fn new(buckets: usize) -> HashMap {
+    	HashMap { size: 0 }
+    }
+
+    pub fn is_empty(&self) -> bool {
+    	self.size() == 0
+    }
+
+    pub fn size(&self) -> usize {
+    	self.size
+    }
+
+    pub fn put(&mut self, key: i32, val: i32) {
+    	self.size += 1;
+    }
+
+    pub fn contains(&self, key: i32) -> bool {
+    	false
+    }
+}
