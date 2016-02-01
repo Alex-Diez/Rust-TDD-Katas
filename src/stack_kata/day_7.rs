@@ -1,7 +1,3 @@
-#![feature(alloc,core_intrinsics)]
-
-extern crate alloc;
-
 use alloc::raw_vec::RawVec;
 
 use std::ops::{Deref, DerefMut};
@@ -10,7 +6,7 @@ use std::intrinsics::assume;
 
 pub struct Stack<T> {
     size: usize,
-    raw_vec: RawVec<T>
+    buf: RawVec<T>
 }
 
 impl <T> Deref for Stack<T> {
@@ -18,9 +14,7 @@ impl <T> Deref for Stack<T> {
 
     fn deref(&self) -> &[T] {
         unsafe {
-            let ptr = self.raw_vec.ptr();
-            assume(!ptr.is_null());
-            slice::from_raw_parts(ptr, self.size)
+            slice::from_raw_parts(self.as_ptr(), self.size)
         }
     }
 }
@@ -29,17 +23,17 @@ impl <T> DerefMut for Stack<T> {
     
     fn deref_mut(&mut self) -> &mut [T] {
         unsafe {
-            let ptr = self.raw_vec.ptr();
-            assume(!ptr.is_null());
-            slice::from_raw_parts_mut(ptr, self.size)
+            let p = self.buf.ptr();
+            assume(!p.is_null());
+            slice::from_raw_parts_mut(self.as_ptr(), self.size)
         }
     }
 }
 
 impl <T> Stack<T> {
-    
+
     pub fn new(max_size: usize) -> Stack<T> {
-        Stack { size: 0, raw_vec: RawVec::with_capacity(max_size) }
+        Stack { size: 0, buf: RawVec::with_capacity(max_size) }
     }
 
     pub fn size(&self) -> usize {
@@ -50,13 +44,17 @@ impl <T> Stack<T> {
         self.size == 0
     }
 
-    pub fn push(&mut self, val: T) {
-        if self.size < self.raw_vec.cap() {
+    pub fn push(&mut self, v: T) -> bool {
+        if self.size == self.buf.cap() {
+            false
+        }
+        else {
             unsafe {
                 let end = self.as_mut_ptr().offset(self.size as isize);
-                ptr::write(end, val);
+                ptr::write(end, v);
             }
             self.size += 1;
+            true
         }
     }
 
@@ -70,5 +68,11 @@ impl <T> Stack<T> {
         else {
             None
         }
+    }
+
+    unsafe fn as_ptr(&self) -> *mut T {
+        let p = self.buf.ptr();
+        assume(!p.is_null());
+        p
     }
 }

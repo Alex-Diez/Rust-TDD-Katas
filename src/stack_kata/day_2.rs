@@ -1,7 +1,3 @@
-#![feature(core_intrinsics, alloc)]
-
-extern crate alloc;
-
 use alloc::raw_vec::RawVec;
 
 use std::ops::{Deref, DerefMut};

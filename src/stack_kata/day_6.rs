@@ -1,7 +1,3 @@
-#![feature(alloc, core_intrinsics)]
-
-extern crate alloc;
-
 use alloc::raw_vec::RawVec;
 
 use std::ops::{Deref, DerefMut};
@@ -38,16 +34,19 @@ impl <T> Stack<T> {
         Stack { size: 0, buf: RawVec::with_capacity(max_size) }
     }
 
-    pub fn size(&self) -> usize {
-        self.size
-    }
-
     pub fn is_empty(&self) -> bool {
         self.size == 0
     }
 
+    pub fn size(&self) -> usize {
+        self.size
+    }
+
     pub fn push(&mut self, v: T) -> bool {
-        if self.size < self.buf.cap() {
+        if self.size == self.buf.cap() {
+            false
+        }
+        else {
             unsafe {
                 let end = self.as_mut_ptr().offset(self.size as isize);
                 ptr::write(end, v);
@@ -55,26 +54,23 @@ impl <T> Stack<T> {
             self.size += 1;
             true
         }
-        else {
-            false
-        }
     }
 
     pub fn pop(&mut self) -> Option<T> {
-        if self.is_empty() {
-            None
-        }
-        else {
+        if !self.is_empty() {
             self.size -= 1;
             unsafe {
                 Some(ptr::read(self.get_unchecked(self.size)))
             }
         }
+        else {
+            None
+        }
     }
 
     unsafe fn as_ptr(&self) -> *mut T {
-        let ptr = self.buf.ptr();
-        assume(!ptr.is_null());
-        ptr
+        let p = self.buf.ptr();
+        assume(!p.is_null());
+        p
     }
 }

@@ -1,7 +1,3 @@
-#![feature(core_intrinsics, alloc)]
-
-extern crate alloc;
-
 use alloc::raw_vec::RawVec;
 
 use std::ops::{Deref, DerefMut};
@@ -10,7 +6,7 @@ use std::intrinsics::assume;
 
 pub struct Stack<T> {
     size: usize,
-    raw_vec: RawVec<T>
+    buf: RawVec<T>
 }
 
 impl <T> Deref for Stack<T> {
@@ -35,7 +31,7 @@ impl <T> DerefMut for Stack<T> {
 impl <T> Stack<T> {
 
     pub fn new(max_size: usize) -> Stack<T> {
-        Stack { size: 0, raw_vec: RawVec::with_capacity(max_size) }
+        Stack { size: 0, buf: RawVec::with_capacity(max_size) }
     }
 
     pub fn size(&self) -> usize {
@@ -46,17 +42,17 @@ impl <T> Stack<T> {
         self.size == 0
     }
 
-    pub fn push(&mut self, value: T) -> bool {
-        if self.size == self.raw_vec.cap() {
-            false
-        }
-        else {
+    pub fn push(&mut self, v: T) -> bool {
+        if self.size < self.buf.cap() {
             unsafe {
                 let end = self.as_mut_ptr().offset(self.size as isize);
-                ptr::write(end, value);
+                ptr::write(end, v);
             }
             self.size += 1;
             true
+        }
+        else {
+            false
         }
     }
 
@@ -73,7 +69,7 @@ impl <T> Stack<T> {
     }
 
     unsafe fn as_ptr(&self) -> *mut T {
-        let ptr = self.raw_vec.ptr();
+        let ptr = self.buf.ptr();
         assume(!ptr.is_null());
         ptr
     }
