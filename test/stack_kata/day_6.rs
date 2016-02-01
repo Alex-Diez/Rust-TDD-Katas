@@ -1,9 +1,4 @@
-#![feature(plugin, const_fn)]
-#![plugin(stainless)]
-
-extern crate collections;
-
-pub use collections::Stack;
+pub use tdd_kata::stack_kata::day_6::Stack;
 
 describe! stack_tests {
 
