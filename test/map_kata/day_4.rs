@@ -1,6 +1,4 @@
-extern crate collections;
-
-use collections::Map;
+pub use tdd_kata::map_kata::day_4::Map;
 
 #[test]
 fn it_should_create_a_new_empty_map() {

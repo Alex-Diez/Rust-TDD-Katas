@@ -1,6 +1,4 @@
-extern crate collections;
-
-use collections::HashMap;
+pub use tdd_kata::map_kata::day_3::HashMap;
 
 #[test]
 fn it_should_create_a_new_empty_map() {

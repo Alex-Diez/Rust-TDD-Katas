@@ -20,7 +20,7 @@ impl Map {
     }
 
     pub fn put(&mut self, key: i32, val: i32) {
-        if(!self.contains(key)) {
+        if !self.contains(key) {
             self.size += 1;
             self.buckets.push(key);
         }

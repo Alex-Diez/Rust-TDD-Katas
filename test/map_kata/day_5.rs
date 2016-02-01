@@ -1,9 +1,4 @@
-#![feature(const_fn,plugin)]
-#![plugin(stainless)]
-
-extern crate collections;
-
-pub use self::collections::Map;
+pub use tdd_kata::map_kata::day_5::Map;
 
 describe! map_tests {
 

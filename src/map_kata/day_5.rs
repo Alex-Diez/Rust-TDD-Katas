@@ -1,6 +1,3 @@
-#![feature(plugin)]
-#![plugin(clippy)]
-
 use std::mem;
 use std::option::Option;
 use std::boxed::Box;

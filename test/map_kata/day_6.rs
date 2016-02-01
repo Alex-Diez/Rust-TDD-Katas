@@ -1,11 +1,4 @@
-#![feature(const_fn,plugin)]
-#![plugin(stainless)]
-
-extern crate collections;
-#[macro_use(expect)]
-extern crate expectest;
-
-pub use collections::Map;
+pub use tdd_kata::map_kata::day_6::Map;
 pub use expectest::prelude::{be_true, be_false, be_equal_to, be_some};
 
 describe! map_tests {

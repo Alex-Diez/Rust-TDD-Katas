@@ -1,6 +1,3 @@
-#![feature(plugin)]
-#![plugin(clippy)]
-
 use std::mem;
 use std::boxed::Box;
 use std::option::Option;
@@ -130,11 +127,12 @@ impl Map {
         while (*link).key != Some(key) && (*link).next.is_some() {
             link = (*link).next.unwrap();
         }
-        if (*link).key == Some(key) {
-            (*link).value.as_ref()
-        }
-        else {
-            None
-        }
+        //if (*link).key == Some(key) {
+        //    (*link).value.as_ref()
+        //}
+        //else {
+        //    None
+        //}
+        None
     }
 }
