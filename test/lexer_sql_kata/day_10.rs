@@ -1,10 +1,4 @@
-#![feature(plugin,const_fn)]
-#![plugin(stainless)]
-
-extern crate lexer;
-
-pub use lexer::Lexer;
-pub use lexer::Token;
+pub use tdd_kata::lexer_sql_kata::day_10::{Lexer, Token};
 
 describe! lexer_test {
 

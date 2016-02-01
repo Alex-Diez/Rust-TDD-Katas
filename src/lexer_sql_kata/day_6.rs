@@ -1,7 +1,3 @@
-#![feature(plugin)]
-#![plugin(regex_macros)]
-extern crate regex;
-
 use std::iter::Peekable;
 use std::str::Chars;
 

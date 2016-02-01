@@ -1,6 +1,4 @@
-extern crate lexer;
-
-use lexer::Lexer;
+pub use tdd_kata::lexer_sql_kata::day_2::Lexer;
 
 #[test]
 fn test_create_lexer() {

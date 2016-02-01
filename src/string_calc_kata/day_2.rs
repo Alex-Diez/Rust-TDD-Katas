@@ -1,5 +1,4 @@
 use std::str::Chars;
-use std::iter::Peekable;
 use std::option::Option;
 
 pub struct Calculator<'a> {

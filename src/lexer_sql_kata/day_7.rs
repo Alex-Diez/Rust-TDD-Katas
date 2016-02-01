@@ -1,9 +1,8 @@
 use std::iter::Peekable;
 use std::str::Chars;
 use std::string::String;
-use std::clone::Clone;
 
-#[derive(PartialEq, Debug, Copy, Clone)]
+#[derive(PartialEq, Debug)]
 pub enum Token {
     Word(String),
 
@@ -15,10 +14,19 @@ pub enum Token {
     Colon
 }
 
-impl Clone for Token {
+/*impl Clone for Token {
 
-    
-}
+    fn clone(&self) -> Token {
+        match self {
+            Token::Word(string) => Token::Word(string),
+            Token::LeftParenthesis => Token::LeftParenthesis,
+            Token::RightParenthesis => Token::RightParenthesis,
+            Token::SemiColon => Token::SemiColon,
+            Token::SingleQuote => Token::SingleQuote,
+            Token::Colon => Token::Colon,
+        }
+    }
+}*/
 
 pub struct Lexer <'a> {
     iter: Peekable<Chars<'a>>,
@@ -57,7 +65,7 @@ impl <'a> Lexer<'a> {
 
     fn do_token(&mut self, token: Token) -> Option<Token> {
         self.skip_symbol();
-        self.previous = Some(token);
+     //   self.previous = Some(token);
         Some(token)
     }
 

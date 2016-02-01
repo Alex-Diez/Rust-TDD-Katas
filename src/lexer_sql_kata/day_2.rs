@@ -1,4 +1,3 @@
-#![feature(unboxed_closures)]
 use std::iter::Peekable;
 use std::str::Chars;
 
