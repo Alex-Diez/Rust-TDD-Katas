@@ -1,0 +1,19 @@
+[package]
+name = "tdd-kata"
+version = "0.0.1-SNAPSHOT"
+authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
+
+[lib]
+name = "tdd_kata"
+
+[[test]]
+name = "test"
+path = "test/lib.rs"
+
+[dependencies.stainless]
+git = "https://github.com/Alex-Diez/stainless.git"
+branch = "ignore_tests"
+
+[dependencies]
+clippy = "0.0.37"
+expectest = "0.4.1"

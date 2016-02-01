@@ -1,5 +1,6 @@
 #cargo builds
 target/
+Cargo.lock
 
 #sublime files
 *.sublime*
