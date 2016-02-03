@@ -2,6 +2,7 @@ pub struct Map {
     elems: Vec<i32>
 }
 
+#[allow(dead_code, unused_variables)]
 impl Map {
     
     pub fn new() -> Map {

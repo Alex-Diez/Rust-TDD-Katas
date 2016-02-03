@@ -2,6 +2,7 @@ pub struct Map {
     len: usize
 }
 
+#[allow(dead_code, unused_variables)]
 impl Map {
     
     pub fn new(size: usize) -> Map {

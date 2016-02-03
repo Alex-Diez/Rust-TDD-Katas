@@ -70,6 +70,7 @@ pub struct Map {
     table: Vec<BucketLink>
 }
 
+#[allow(dead_code, unused_variables)]
 impl Map {
 
     pub fn new() -> Map {

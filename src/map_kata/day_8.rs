@@ -6,7 +6,6 @@ use std::ops::DerefMut;
 use std::clone::Clone;
 use std::marker::Copy;
 
-#[allow(dead_code)]
 struct Bucket {
     key: Option<i32>,
     value: Option<i32>,
@@ -77,7 +76,6 @@ pub struct Map {
 
 const CAPACITY: usize = 16;
 
-#[allow(dead_code, unused_variables)]
 impl Map {
 
     pub fn new() -> Map {
@@ -100,7 +98,7 @@ impl Map {
     }
 
     pub fn insert(&mut self, key: i32, value: i32) {
-        let index = self.table.capacity() & key as usize;
+        let index = (CAPACITY - 1) & key as usize;
         let mut link = self.table[index];
         while (*link).key != Some(key) && (*link).next.is_some() {
             link = (*link).next.unwrap();
@@ -112,10 +110,13 @@ impl Map {
             new_bucket.next = Some(link);
             self.table[index] = Link::new(new_bucket);
         }
+        else {
+            (*link).value = Some(value);
+        }
     }
 
     pub fn contains(&self, key: i32) -> bool {
-        let index = self.table.capacity() & key as usize;
+        let index = (CAPACITY - 1) & key as usize;
         let mut link = self.table[index];
         while (*link).key != Some(key) && (*link).next.is_some() {
             link = (*link).next.unwrap();
@@ -123,18 +124,17 @@ impl Map {
         (*link).key == Some(key)
     }
 
-    pub fn get(&self, key: i32) -> Option<&i32> {
-        let index = self.table.capacity() & key as usize;
+    pub fn get(&self, key: i32) -> Option<i32> {
+        let index = (CAPACITY - 1) & key as usize;
         let mut link = self.table[index];
         while (*link).key != Some(key) && (*link).next.is_some() {
             link = (*link).next.unwrap();
         }
-        //if (*link).key == Some(key) {
-        //    (*link).value.as_ref()
-        //}
-        //else {
-        //    None
-        //}
-        None
+        if (*link).key == Some(key) {
+            (*link).value
+        }
+        else {
+            None
+        }
     }
 }

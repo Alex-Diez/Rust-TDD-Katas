@@ -2,6 +2,7 @@ pub struct HashMap {
 	size: usize
 }
 
+#[allow(dead_code, unused_variables)]
 impl HashMap {
     
     pub fn new(buckets: usize) -> HashMap {

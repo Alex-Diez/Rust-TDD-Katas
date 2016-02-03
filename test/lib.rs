@@ -1,5 +1,7 @@
 #![feature(const_fn,plugin)]
 #![plugin(stainless)]
+#![allow(unused_variables, unused_mut, dead_code)]
+
 extern crate tdd_kata;
 #[macro_use(expect)]
 extern crate expectest;

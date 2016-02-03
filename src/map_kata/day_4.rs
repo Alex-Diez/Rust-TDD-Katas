@@ -5,6 +5,7 @@ pub struct Map {
     buckets: Vec<i32>
 }
 
+#[allow(dead_code, unused_variables)]
 impl Map {
     
     pub fn new(buckets: usize) -> Map {
