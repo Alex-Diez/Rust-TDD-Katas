@@ -41,11 +41,11 @@ fn parse_arg(iter: &mut Peekable<Chars>) -> Result<f64, ParseFloatError> {
             Some(_) | None => break,
         }
     }
-    value.iter().map(|c| *c).collect::<String>().parse::<f64>()
+    value.iter().cloned().collect::<String>().parse::<f64>()
 }
 
 fn next_symbol(iter: &mut Peekable<Chars>) -> Option<char> {
-    iter.peek().map(|c| *c)
+    iter.peek().cloned()
 }
 
 fn skip_symbol(iter: &mut Peekable<Chars>) {

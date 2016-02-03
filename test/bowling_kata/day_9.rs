@@ -34,6 +34,7 @@ fn test_one_spare() {
 }
 
 #[test]
+#[ignore]
 fn test_one_strike() {
     let mut game = Game::new();
     game.roll(10);

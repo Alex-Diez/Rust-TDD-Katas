@@ -37,5 +37,5 @@ fn parse_factor(iter: &mut Peekable<Chars>) -> Result<f64, ParseFloatError> {
             Some(_) | None => break,
         }
     }
-    s.iter().map(|c| *c).collect::<String>().parse::<f64>()
+    s.iter().cloned().collect::<String>().parse::<f64>()
 }

@@ -36,18 +36,18 @@ fn parse_term(iter: &mut Peekable<Chars>) -> Result<f64, ParseFloatError> {
 fn parse_arg(iter: &mut Peekable<Chars>) -> Result<f64, ParseFloatError> {
     let mut value = vec![];
     loop {
-        let symbol = iter.peek().map(|c| *c);
+        let symbol = iter.peek().cloned();
         match symbol {
             Some(c @ '0'...'9') | Some(c @ '.') => { iter.next(); value.push(c) },
             Some('(') => { iter.next(); let result = try!(parse_expression(&mut iter.by_ref())); iter.next(); return Ok(result) },
             Some(_) | None => { break }
         }
     }
-    value.iter().map(|c| *c).collect::<String>().parse::<f64>()
+    value.iter().cloned().collect::<String>().parse::<f64>()
 }
 
 fn next_symbol(iter: &mut Peekable<Chars>) -> Option<char> {
-    iter.peek().map(|c| *c)
+    iter.peek().cloned()
 }
 
 fn skip_symbol(iter: &mut Peekable<Chars>) {

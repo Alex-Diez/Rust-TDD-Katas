@@ -46,7 +46,7 @@ impl <'a> Lexer<'a> {
             None
         }
         else {
-            let string = word.iter().map(|c| *c).collect::<String>().to_lowercase();
+            let string = word.iter().cloned().collect::<String>().to_lowercase();
             self.previous = Some(Token::Word(string.clone()));
             Some(Token::Word(string))
         }
@@ -63,7 +63,7 @@ impl <'a> Lexer<'a> {
         loop {
             if self.previous_symbol != Some('\'') && self.current_symbol != Some('\'') {
                 self.previous_symbol = self.current_symbol;
-                self.current_symbol = self.iter.peek().map(|c| *c);
+                self.current_symbol = self.iter.peek().cloned();
             }
             println!("68 previous - {:?} current - {:?}", self.previous_symbol, self.current_symbol);
             match self.current_symbol {
@@ -86,7 +86,7 @@ impl <'a> Lexer<'a> {
                     if !value.is_empty() && self.previous.is_some() {
                         self.previous_symbol = self.current_symbol;
                         self.skip_symbol();
-                        self.current_symbol = self.iter.peek().map(|c| *c);
+                        self.current_symbol = self.iter.peek().cloned();
                         match self.previous_symbol {
                             Some('A'...'Z') |
                             Some('a'...'z') |

@@ -83,7 +83,7 @@ impl Lexer {
         }
         let mut v = self.src.clone();
         self.src = v.split_off(i);
-        Token::Word(v.iter().map(|c| *c).collect::<String>().to_lowercase())
+        Token::Word(v.iter().cloned().collect::<String>().to_lowercase())
     }
 
     fn has_lexem_in_begining(&self) -> bool {

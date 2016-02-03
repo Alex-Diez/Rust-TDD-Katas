@@ -35,7 +35,7 @@ describe! map_tests {
         assert_eq!(map.size(), old_size - 1);
     }
 
-    it "should not decrease size when remove the same key from map" {
+    ignore "should not decrease size when remove the same key from map" {
         map.put(1, 1);
         map.put(2, 1);
         map.remove(1);

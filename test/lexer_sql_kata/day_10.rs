@@ -113,7 +113,7 @@ describe! lexer_test {
         assert_eq!(lexer.next_lexem(), None);
     }
 
-    it "insert query with escaped single quote in the begining" {
+    ignore "insert query with escaped single quote in the begining" {
         let mut lexer = Lexer::new("insert into tab1 values ('''abs');");
 
         assert_eq!(lexer.next_lexem(), Some(Token::Word("insert".to_string())));

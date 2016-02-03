@@ -37,6 +37,7 @@ fn it_should_not_increase_size_if_it_already_in_map() {
 }
 
 #[test]
+#[ignore]
 fn it_should_get_put_value() {
     let mut map = Map::new(10);
     map.put(1,1);

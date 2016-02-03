@@ -47,11 +47,11 @@ fn parse_arg(iter: &mut Peekable<Chars>) -> Result<f32, ParseFloatError> {
             Some(_) | None => break,
         }
     }
-    value.iter().map(|c| *c).collect::<String>().parse::<f32>()
+    value.iter().cloned().collect::<String>().parse::<f32>()
 }
 
 fn next_symbol(iter: &mut Peekable<Chars>) -> Option<char> {
-    iter.peek().map(|c| *c)
+    iter.peek().cloned()
 }
 
 fn skip_symbol(iter: &mut Peekable<Chars>) {

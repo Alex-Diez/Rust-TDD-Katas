@@ -17,7 +17,7 @@ impl Game {
     pub fn score(&self) -> i32 {
         let mut score = 0;
         let mut i = 0;
-        for frame in 0..10 {
+        for _ in 0..10 {
             if self.rolls[i] + self.rolls[i+1] == 10 {
                 score += 10 + self.rolls[i+2];
             }

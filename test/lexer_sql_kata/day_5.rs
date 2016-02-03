@@ -21,6 +21,7 @@ fn test_identifier_lexem() {
 }
 
 #[test]
+#[ignore]
 fn test_insert_query() {
     let mut lexer = Lexer::new("insert into tab1(col1, col2) values ('1', 2);");
 

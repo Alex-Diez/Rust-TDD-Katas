@@ -35,6 +35,7 @@ fn test_words_devided_by_white_spaces() {
 }
 
 #[test]
+#[ignore]
 fn test_sql_with_comment_line() {
     let mut lexer = Lexer::new("Word //Some Comment Here\nAnother Word");
 

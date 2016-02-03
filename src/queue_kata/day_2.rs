@@ -23,6 +23,7 @@ pub struct Queue {
     tail: Option<Shared<Node>>
 }
 
+#[allow(boxed_local)]
 impl Queue {
     
     pub fn new() -> Queue {
@@ -58,18 +59,10 @@ impl Queue {
         match self.head {
             Some(ref head) => {
                 let mut node = head;
-                let mut find = false;
-                loop {
-                    if (**node).elem == e {
-                        find = true;
-                        break;
-                    }
-                    match (**node).next {
-                        Some(ref next) => node = next,
-                        None => break,
-                    }
+                while (*node).elem != e && (*node).next.is_some() {
+                    node = (*node).next.as_ref().unwrap();
                 }
-                find
+                (*node).elem == e
             },
             None => false,
         }

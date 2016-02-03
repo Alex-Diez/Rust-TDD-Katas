@@ -35,7 +35,7 @@ impl <'a> Lexer<'a> {
                 break;
             }
         }
-        Some(value.iter().map(|c| *c).collect::<String>())
+        Some(value.iter().cloned().collect::<String>())
     }
 
     fn define_symbol_group(&mut self) -> SymbolGroup {
@@ -48,6 +48,6 @@ impl <'a> Lexer<'a> {
     }
 
     fn peek_next_symbol(&mut self) -> Option<char> {
-        self.iter.peek().map(|c| *c)
+        self.iter.peek().cloned()
     }
 }

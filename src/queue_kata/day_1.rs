@@ -4,6 +4,7 @@ use std::option::Option;
 
 type Link = Option<Box<Node>>;
 
+#[allow(dead_code)]
 struct Node {
     elem: i32,
     next: Link
@@ -52,10 +53,11 @@ impl Queue {
         self.size -= 1;
     }
 
+    #[allow(unused_variables)]
     pub fn contains(&self, val: i32) -> bool {
-        let ref node = self.head;
+/*        let ref node = self.head;
         let mut find = false;
- /*       loop {
+        loop {
             match node {
                 Some(n) => {
                     find = n.elem == val;
@@ -64,6 +66,6 @@ impl Queue {
                 None => break,
             }
         }*/
-        find
+        false
     }
 }

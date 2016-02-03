@@ -19,6 +19,7 @@ fn it_should_increase_map_size_when_put() {
 }
 
 #[test]
+#[ignore]
 fn it_should_contain_put_value() {
     let mut map = HashMap::new(10);
     map.put(1,1);

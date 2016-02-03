@@ -38,7 +38,7 @@ impl <'a> Lexer<'a> {
     pub fn next_lexem(&mut self) -> Option<Token> {
         let mut value = vec![];
         loop {
-            let symbol = self.iter.peek().map(|c| *c);
+            let symbol = self.iter.peek().cloned();
             match symbol {
                 Some(s @ 'a'...'z') | Some(s @ 'A'...'Z') |
                 Some(s @ '_') | Some(s @ '0'...'9') => { self.iter.next(); value.push(s) },
@@ -50,7 +50,7 @@ impl <'a> Lexer<'a> {
             None
         }
         else {
-            let string = value.iter().map(|c| *c).collect::<String>();
+            let string = value.iter().cloned().collect::<String>();
             if self.insert.is_match(&string) {
                 Some(Token::Insert)
             }

@@ -1,6 +1,6 @@
 pub struct Calculator<'a> {
     line: &'a str,
-    operands: Vec<char>
+    operands: Vec<char>,
 }
 
 impl <'a> Calculator<'a> {

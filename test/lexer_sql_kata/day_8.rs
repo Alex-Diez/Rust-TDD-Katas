@@ -69,6 +69,7 @@ fn test_single_quote() {
 }
 
 #[test]
+#[ignore]
 fn test_insert_query() {
     let mut lexer = Lexer::new("insert into tab1 values (1 , '1');");
 
@@ -87,6 +88,7 @@ fn test_insert_query() {
 }
 
 #[test]
+#[ignore]
 fn test_insert_query_with_column_sequence() {
     let mut lexer = Lexer::new("insert into tab1 (col_1 , col2) values (1, '1');");
 

@@ -10,6 +10,7 @@ fn test_evaluate_diff_numbers() {
 }
 
 #[test]
+#[ignore]
 fn test_evaluate_one_plus_two() {
     let calc = Calculator::new("1+2");
 
@@ -17,6 +18,7 @@ fn test_evaluate_one_plus_two() {
 }
 
 #[test]
+#[ignore]
 fn test_evaluate_two_minus_one() {
     let calc = Calculator::new("2-1");
 

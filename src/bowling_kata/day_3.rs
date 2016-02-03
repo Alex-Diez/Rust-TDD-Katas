@@ -15,7 +15,7 @@ impl Game {
     pub fn score(&self) -> i32 {
         let mut score = 0;
         let mut frame_index = 0;
-        for frame in 0..10 {
+        for _ in 0..10 {
             if self.is_strike(frame_index) {
                 score += self.rolls[frame_index] + self.strike_bonus(frame_index);
                 frame_index += 1;

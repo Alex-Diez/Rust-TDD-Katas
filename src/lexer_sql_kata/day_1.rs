@@ -14,15 +14,15 @@ impl <'a> Lexer<'a> {
     pub fn next_lexem(&mut self) -> Option<String> {
         let mut lexem = vec![];
         loop {
-            let symbol = self.query_line_iter.by_ref().peek().map(|c| *c);
+            let symbol = self.query_line_iter.by_ref().peek().cloned();
             match symbol {
-                Some(c @ _) => { self.query_line_iter.by_ref().next(); lexem.push(c) },
+                Some(c) => { self.query_line_iter.by_ref().next(); lexem.push(c) },
                 None => break,
             }
         }
         if lexem.is_empty() {
             return None;
         }
-        Some(lexem.iter().map(|c| *c).collect::<String>())
+        Some(lexem.iter().cloned().collect::<String>())
     }
 }

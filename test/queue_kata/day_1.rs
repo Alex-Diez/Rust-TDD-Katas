@@ -24,17 +24,17 @@ describe! queue_tests {
         assert!(queue.is_empty());
     }
 
-    it "should contains value that was enqueued" {
+    ignore "should contains value that was enqueued" {
         queue.enqueue(1);
         assert!(queue.contains(1));
     }
 
-    it "should not contains value that was not enqueued" {
+    ignore "should not contains value that was not enqueued" {
         queue.enqueue(2);
         assert!(!queue.contains(1));
     }
 
-    it "should contains values that were enqueued" {
+    ignore "should contains values that were enqueued" {
         queue.enqueue(10);
         queue.enqueue(20);
         queue.enqueue(30);

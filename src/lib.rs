@@ -1,6 +1,5 @@
 #![feature(plugin,core_intrinsics,alloc,shared)]
 #![plugin(regex_macros,clippy)]
-#![allow(unused_variables, unused_mut, dead_code)]
 
 extern crate regex;
 extern crate alloc;

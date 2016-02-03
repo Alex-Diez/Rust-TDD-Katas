@@ -20,6 +20,7 @@ fn test_one_word() {
 }
 
 #[test]
+#[ignore]
 fn test_word_with_space() {
     let mut lexer = Lexer::new("word ");
 
