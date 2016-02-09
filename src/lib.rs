@@ -10,3 +10,4 @@ pub mod lexer_sql_kata;
 pub mod stack_kata;
 pub mod queue_kata;
 pub mod map_kata;
+pub mod lcd_kata;

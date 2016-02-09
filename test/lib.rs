@@ -12,3 +12,4 @@ mod lexer_sql_kata;
 mod stack_kata;
 mod queue_kata;
 mod map_kata;
+mod lcd_kata;
