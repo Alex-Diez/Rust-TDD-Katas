@@ -1,6 +1,6 @@
 use std::option::Option;
-use std::result::Result;
 use std::error::Error;
+use std::result::Result;
 use std::fmt;
 
 #[derive(PartialEq, Debug)]
@@ -15,6 +15,7 @@ pub enum Number {
     Eight,
     Nine,
     Zero,
+    NotANumber
 }
 
 impl From<char> for Number {
@@ -31,7 +32,7 @@ impl From<char> for Number {
             '8' => Number::Eight,
             '9' => Number::Nine,
             '0' => Number::Zero,
-            c => panic!("{:?} is not a number", c),
+            _ => Number::NotANumber,
         }
     }
 }
@@ -51,14 +52,14 @@ impl DisplayError {
 impl Error for DisplayError {
 
     fn description(&self) -> &str {
-        "display can't display current input"
+        "LCD can't display current input"
     }
 }
 
 impl fmt::Display for DisplayError {
 
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Display Error")
+        write!(f, "LCD error")
     }
 }
 
@@ -74,16 +75,26 @@ impl Display {
         }
     }
 
-    pub fn input(&mut self, data: &'static str) {
-        self.input = Some(data);
-    }
-
     pub fn output(&self) -> DisplayResult {
         match self.input {
-            Some(data) => {
-                Ok(data.chars().map(Number::from).collect::<Vec<Number>>())
+            Some(s) => {
+                let mut v = Vec::with_capacity(s.len());
+                for c in s.chars() {
+                    let n = Number::from(c);
+                    if n == Number::NotANumber {
+                        return Err(DisplayError::new());
+                    }
+                    else {
+                        v.push(n);
+                    }
+                }
+                Ok(v)
             },
-            None => Err(DisplayError::new()),
+            None => Ok(vec![]),
         }
+    }
+
+    pub fn input(&mut self, data: &'static str) {
+        self.input = Some(data);
     }
 }
