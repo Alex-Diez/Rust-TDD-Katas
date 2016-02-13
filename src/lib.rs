@@ -1,5 +1,6 @@
 #![feature(plugin,core_intrinsics,alloc,shared)]
 #![plugin(regex_macros,clippy)]
+#![allow(regex_macro,derive_hash_not_eq)]
 
 extern crate regex;
 extern crate alloc;

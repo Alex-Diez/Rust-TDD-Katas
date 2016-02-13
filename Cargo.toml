@@ -12,10 +12,10 @@ path = "test/lib.rs"
 
 [dependencies.stainless]
 git = "https://github.com/Alex-Diez/stainless.git"
-branch = "ignore_tests"
+branch = "master"
 
 [dependencies]
-clippy = "0.0.37"
+clippy = "0.0.41"
 expectest = "0.4.1"
 regex = "0.1.48"
 regex_macros = "0.1.27"

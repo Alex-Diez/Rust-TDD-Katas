@@ -30,7 +30,7 @@ pub struct Lexer <'a> {
 }
 
 impl <'a> Lexer<'a> {
-    
+
     pub fn new(line: &'a str) -> Lexer {
         Lexer {
             iter: line.chars().peekable(),
