@@ -12,3 +12,4 @@ pub mod stack_kata;
 pub mod queue_kata;
 pub mod map_kata;
 pub mod lcd_kata;
+pub mod thread_counting_kata;

@@ -13,3 +13,4 @@ mod stack_kata;
 mod queue_kata;
 mod map_kata;
 mod lcd_kata;
+mod thread_counting_kata;
