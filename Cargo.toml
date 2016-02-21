@@ -15,7 +15,7 @@ git = "https://github.com/Alex-Diez/stainless.git"
 branch = "master"
 
 [dependencies]
-clippy = "0.0.41"
+clippy = "0.0.42"
 expectest = "0.4.1"
-regex = "0.1.48"
-regex_macros = "0.1.28"
+regex = "0.1.52"
+regex_macros = "0.1.30"
