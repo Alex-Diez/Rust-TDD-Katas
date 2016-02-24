@@ -21,12 +21,12 @@ impl CounterInner {
         self.numbers.iter().cloned().collect::<HashSet<i32>>()
     }
 
-    fn numbers_of(&self, name: &str) -> HashSet<i32> {
-        self.threads[&Some(name.to_owned())].iter().cloned().collect::<HashSet<i32>>()
-    }
-
     fn threads(&self) -> usize {
         self.threads.len()
+    }
+
+    fn numbers_of(&self, name: &str) -> HashSet<i32> {
+        self.threads[&Some(name.to_owned())].iter().cloned().collect::<HashSet<i32>>()
     }
 
     fn count(&mut self, n: i32) {
@@ -88,18 +88,18 @@ impl ThreadCounter {
     pub fn count_in_threads(&self, counter: &Counter) {
         let barrier = Arc::new(Barrier::new(self.number_of_threads + 1));
         let mut flags = Vec::with_capacity(self.number_of_threads);
-        for _ in (0..).take(self.number_of_threads) {
+        for _ in 0..self.number_of_threads {
             flags.push(Arc::new(AtomicBool::new(false)));
         }
         flags[0].store(true, Ordering::SeqCst);
         for i in (1..).take(self.number_of_threads) {
-            let limit = self.limit as i32;
             let counter = counter.clone();
+            let limit = self.limit as i32;
+            let increment = self.number_of_threads as i32;
+            let start = i as i32;
             let barrier = barrier.clone();
             let allow_flag = flags[(i-1) % self.number_of_threads].clone();
             let ready_flag = flags[i % self.number_of_threads].clone();
-            let start = i as i32;
-            let increment = self.number_of_threads as i32;
             thread::Builder::new().name(format!("Thread-{}", i)).spawn(
                 move || {
                     let mut current = start;
