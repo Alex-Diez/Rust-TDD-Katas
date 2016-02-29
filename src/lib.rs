@@ -13,3 +13,4 @@ pub mod queue_kata;
 pub mod map_kata;
 pub mod lcd_kata;
 pub mod thread_counting_kata;
+pub mod inc_dec_numbers_kata;

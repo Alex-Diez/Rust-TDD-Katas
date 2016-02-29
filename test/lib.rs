@@ -14,3 +14,4 @@ mod queue_kata;
 mod map_kata;
 mod lcd_kata;
 mod thread_counting_kata;
+mod inc_dec_numbers_kata;
