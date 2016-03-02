@@ -1,4 +1,4 @@
-use tdd_kata::string_calc_kata::day_6::evaluate;
+use tdd_kata::string_calc_kata::iter_1::day_6::evaluate;
 
 #[test]
 fn test_eval_simple_num() {

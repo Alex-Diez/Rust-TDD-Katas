@@ -1,7 +1,8 @@
-use tdd_kata::string_calc_kata::day_2::Calculator;
+use tdd_kata::string_calc_kata::iter_1::day_1::Calculator;
 
 #[test]
-fn test_evaluate_diff_numbers() {
+#[ignore]
+fn test_evaluate_number() {
     let calc1 = Calculator::new("1");
     let calc2 = Calculator::new("2");
 

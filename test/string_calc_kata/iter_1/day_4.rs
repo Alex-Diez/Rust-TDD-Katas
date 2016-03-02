@@ -1,4 +1,4 @@
-use tdd_kata::string_calc_kata::day_4::evaluate;
+use tdd_kata::string_calc_kata::iter_1::day_4::evaluate;
 
 #[test]
 fn test_evaluate_one() {
