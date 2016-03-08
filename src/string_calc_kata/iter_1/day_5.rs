@@ -34,12 +34,12 @@ fn parse_arg(iter: &mut Peekable<Chars>) -> f32 {
             },
             Some(d @ '0'...'9') => {
                 let v = d.to_digit(10).unwrap() as f32;
-                if !has_point {
-                    accumulator = accumulator*10.0 + v;
+                if has_point {
+                    accumulator = accumulator + v * exponent;
+                    exponent = exponent * 0.1;
                 }
                 else {
-                    accumulator = accumulator + v*exponent;
-                    exponent *= 0.1;
+                    accumulator = accumulator*10.0 + v;
                 }
             },
             Some(_) | None => {},

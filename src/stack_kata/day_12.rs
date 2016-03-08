@@ -22,7 +22,7 @@ impl <T> Deref for Stack<T> {
 }
 
 impl <T> DerefMut for Stack<T> {
-    
+
     fn deref_mut(&mut self) -> &mut [T] {
         unsafe {
             let ptr = self.raw_vec.ptr();
@@ -33,7 +33,7 @@ impl <T> DerefMut for Stack<T> {
 }
 
 impl <T> Stack<T> {
-    
+
     pub fn new(max_size: usize) -> Stack<T> {
         Stack { size: 0, raw_vec: RawVec::with_capacity(max_size) }
     }
@@ -57,14 +57,14 @@ impl <T> Stack<T> {
     }
 
     pub fn pop(&mut self) -> Option<T> {
-        if !self.is_empty() {
+        if self.is_empty() {
+            None
+        }
+        else {
             self.size -= 1;
             unsafe {
                 Some(ptr::read(self.get_unchecked(self.size)))
             }
-        }
-        else {
-            None
         }
     }
 }

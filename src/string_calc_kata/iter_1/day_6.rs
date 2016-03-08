@@ -40,12 +40,12 @@ fn parse_factor(iter: &mut Peekable<Chars>) -> f32 {
             Some('.') => has_point = true,
             Some(c @ '0'...'9') => {
                         let value = c.to_digit(10).unwrap() as f32;
-                        if !has_point {
-                            accumulator = accumulator*10.0 + value;
-                        }
-                        else {
+                        if has_point {
                             accumulator = accumulator + value*exp;
                             exp = exp*0.1;
+                        }
+                        else {
+                            accumulator = accumulator*10.0 + value;
                         }
                     }
             Some(_) | None => {}

@@ -53,7 +53,7 @@ impl Deref for Link {
 }
 
 impl DerefMut for Link {
-    
+
     fn deref_mut(&mut self) -> &mut Bucket {
         unsafe { mem::transmute(self.ptr) }
     }
@@ -61,7 +61,7 @@ impl DerefMut for Link {
 
 impl Copy for Link { }
 impl Clone for Link {
-    
+
     fn clone(&self) -> Link {
         Link {
             ptr: self.ptr
@@ -103,15 +103,15 @@ impl Map {
         while (*link).key != Some(key) && (*link).next.is_some() {
             link = (*link).next.unwrap();
         }
-        if (*link).key != Some(key) {
+        if (*link).key == Some(key) {
+            (*link).value = Some(value);
+        }
+        else {
             self.size += 1;
             let mut new_bucket = Bucket::new(key, value);
             let link = self.table[index];
             new_bucket.next = Some(link);
             self.table[index] = Link::new(new_bucket);
-        }
-        else {
-            (*link).value = Some(value);
         }
     }
 

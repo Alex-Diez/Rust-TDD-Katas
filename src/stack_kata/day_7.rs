@@ -20,7 +20,7 @@ impl <T> Deref for Stack<T> {
 }
 
 impl <T> DerefMut for Stack<T> {
-    
+
     fn deref_mut(&mut self) -> &mut [T] {
         unsafe {
             let p = self.buf.ptr();
@@ -59,14 +59,14 @@ impl <T> Stack<T> {
     }
 
     pub fn pop(&mut self) -> Option<T> {
-        if !self.is_empty() {
+        if self.is_empty() {
+            None
+        }
+        else {
             self.size -= 1;
             unsafe {
                 Some(ptr::read(self.get_unchecked(self.size)))
             }
-        }
-        else {
-            None
         }
     }
 
