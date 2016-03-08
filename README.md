@@ -1,6 +1,6 @@
 # TDD katas
 
-Here I have diffrenet tdd katas written with [Rust](https://www.rust-lang.org/)
+Here I have differenet tdd katas written with [Rust](https://www.rust-lang.org/)
 One day I realize that I can learn how to write difficult programs or modules
 just rewriting it every day for half an hour.
 
