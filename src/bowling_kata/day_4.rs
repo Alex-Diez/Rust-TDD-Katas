@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 #[allow(dead_code)]
 pub struct Game {
     score: i32,

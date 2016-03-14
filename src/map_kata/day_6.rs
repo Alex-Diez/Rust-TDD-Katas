@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::mem;
 use std::boxed::Box;
 use std::option::Option;
@@ -54,7 +56,7 @@ impl Deref for Link {
 }
 
 impl DerefMut for Link {
-    
+
     fn deref_mut(&mut self) -> &mut Bucket {
         unsafe { mem::transmute(self.ptr) }
     }
@@ -62,7 +64,7 @@ impl DerefMut for Link {
 
 impl Copy for Link { }
 impl Clone for Link {
-    
+
     fn clone(&self) -> Link {
         Link {
             ptr: self.ptr

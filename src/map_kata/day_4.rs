@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::option::Option;
 
 pub struct Map {
@@ -7,7 +9,7 @@ pub struct Map {
 
 #[allow(dead_code, unused_variables)]
 impl Map {
-    
+
     pub fn new(buckets: usize) -> Map {
         Map { size: 0, buckets: Vec::with_capacity(buckets) }
     }

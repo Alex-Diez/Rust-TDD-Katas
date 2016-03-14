@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::mem;
 use std::option::Option;
 use std::boxed::Box;
@@ -10,7 +12,7 @@ struct Bucket {
 }
 
 impl Bucket {
-    
+
     fn new(key: i32) -> Bucket {
         Bucket {
             key: Some(key),

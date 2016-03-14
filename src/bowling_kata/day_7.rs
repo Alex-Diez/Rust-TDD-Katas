@@ -1,9 +1,11 @@
+#![allow(new_without_default)]
+
 pub struct Game {
 	rolls: Vec<i32>,
 }
 
 impl Game {
-	
+
 	pub fn new() -> Game {
 		Game { rolls: Vec::with_capacity(21) }
 	}

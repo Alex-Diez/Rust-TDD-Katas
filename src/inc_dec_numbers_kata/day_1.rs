@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use self::NumberType::{Neither, Inc, Dec};
 
 #[derive(PartialEq, Debug)]

@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::str::FromStr;
 use std::result::Result;
 use std::error::Error;

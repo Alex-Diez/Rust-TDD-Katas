@@ -1,4 +1,4 @@
-#![allow(unused_variables, dead_code, unused_imports, unused_variables)]
+#![allow(unused_variables, dead_code, unused_imports, unused_variables, new_without_default)]
 
 use std::collections::HashSet;
 use std::sync::{Barrier, Arc, Mutex};

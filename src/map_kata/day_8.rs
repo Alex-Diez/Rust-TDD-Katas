@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::mem;
 use std::boxed::Box;
 use std::option::Option;

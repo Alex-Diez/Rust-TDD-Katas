@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::mem;
 use std::boxed::Box;
 use std::option::Option;
@@ -13,7 +15,7 @@ struct Bucket {
 }
 
 impl Bucket {
-    
+
     fn new(key: i32, value: i32) -> Bucket {
         Bucket {
             key: Some(key),
@@ -36,7 +38,7 @@ struct Link {
 }
 
 impl Link {
-    
+
     fn new(bucket: Bucket) -> Link {
         Link {
             ptr: Box::into_raw(Box::new(bucket))
@@ -53,7 +55,7 @@ impl Deref for Link {
 }
 
 impl DerefMut for Link {
-    
+
     fn deref_mut(&mut self) -> &mut Bucket {
         unsafe { mem::transmute(self.ptr) }
     }
@@ -61,7 +63,7 @@ impl DerefMut for Link {
 
 impl Copy for Link { }
 impl Clone for Link {
-    
+
     fn clone(&self) -> Link {
         Link {
             ptr: self.ptr

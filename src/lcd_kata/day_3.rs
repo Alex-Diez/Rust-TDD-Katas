@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use self::Number::{One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Zero};
 
 #[derive(PartialEq, Debug)]

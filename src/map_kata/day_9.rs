@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::mem;
 use std::boxed::Box;
 use std::option::Option;
@@ -36,7 +38,7 @@ struct Link {
 }
 
 impl Link {
-    
+
     fn new(bucket: Bucket) -> Link {
         Link {
             ptr: Box::into_raw(Box::new(bucket))
@@ -61,7 +63,7 @@ impl DerefMut for Link {
 
 impl Copy for Link { }
 impl Clone for Link {
-    
+
     fn clone(&self) -> Link {
         Link {
             ptr: self.ptr
@@ -115,7 +117,7 @@ impl Map {
     pub fn contains(&self, key: i32) -> bool {
         let index = (CAPACITY - 1) & key as usize;
         let link = self.iterate(key, index);
-        (*link).key == Some(key) 
+        (*link).key == Some(key)
     }
 
     pub fn get(&self, key: i32) -> Option<i32> {

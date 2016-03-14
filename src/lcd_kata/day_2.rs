@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::option::Option;
 use std::error::Error;
 use std::result::Result;

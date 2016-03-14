@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::collections::{HashSet, HashMap};
 use std::sync::{Arc, Mutex, Barrier};
 use std::sync::atomic::{AtomicBool, Ordering};

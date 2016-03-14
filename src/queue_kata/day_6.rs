@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::boxed::Box;
 use std::ptr::Shared;
 use std::option::Option;
@@ -8,7 +10,7 @@ struct Node {
 }
 
 impl Node {
-    
+
     fn new(e: i32) -> Node {
         Node { elem: e, next: None }
     }
@@ -47,7 +49,7 @@ impl Queue {
             Some(share) => unsafe { (**share).next = Some(node) },
             None => self.head = Some(node),
         }
-        unsafe { 
+        unsafe {
             self.tail = Some(Shared::new(raw));
         }
     }

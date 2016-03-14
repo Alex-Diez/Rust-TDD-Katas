@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::boxed::Box;
 use std::ptr::Shared;
 use std::option::Option;
@@ -25,7 +27,7 @@ pub struct Queue {
 
 #[allow(boxed_local)]
 impl Queue {
-    
+
     pub fn new() -> Queue {
         Queue {
             size: 0,

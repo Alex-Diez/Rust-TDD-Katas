@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::str::Chars;
 
 use self::Number::{One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Zero};

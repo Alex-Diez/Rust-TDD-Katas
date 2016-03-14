@@ -1,10 +1,12 @@
+#![allow(new_without_default)]
+
 pub struct Map {
     len: usize
 }
 
 #[allow(dead_code, unused_variables)]
 impl Map {
-    
+
     pub fn new(size: usize) -> Map {
         Map { len: 0 }
     }
@@ -18,7 +20,7 @@ impl Map {
     }
 
     pub fn put(&mut self, key: i32, value: i32) {
-        self.len += 1; 
+        self.len += 1;
     }
 
     pub fn remove(&mut self, key: i32) {

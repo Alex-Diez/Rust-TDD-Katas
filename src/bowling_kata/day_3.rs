@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 pub struct Game {
     rolls: Vec<i32>,
 }
