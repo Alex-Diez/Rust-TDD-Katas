@@ -1,3 +1,5 @@
+#![allow(new_without_default)]
+
 use std::iter::Peekable;
 use std::str::Chars;
 use std::result::Result;
