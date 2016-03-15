@@ -5,6 +5,7 @@
 extern crate tdd_kata;
 #[macro_use(expect)]
 extern crate expectest;
+extern crate rand;
 
 mod bowling_kata;
 mod string_calc_kata;
@@ -15,3 +16,4 @@ mod map_kata;
 mod lcd_kata;
 mod thread_counting_kata;
 mod inc_dec_numbers_kata;
+mod sorting_kata;

@@ -1,6 +1,6 @@
 [package]
 name = "tdd-kata"
-version = "0.0.9"
+version = "0.0.10"
 authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
 
 [lib]
@@ -19,3 +19,4 @@ clippy = "0.0.51"
 expectest = "0.4.1"
 regex = "0.1.52"
 regex_macros = "0.1.30"
+rand = "0.3.14"
