@@ -5,7 +5,7 @@
 extern crate tdd_kata;
 #[macro_use(expect)]
 extern crate expectest;
-extern crate rand;
+pub extern crate rand;
 
 mod bowling_kata;
 mod string_calc_kata;

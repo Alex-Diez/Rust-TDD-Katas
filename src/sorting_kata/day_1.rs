@@ -1,3 +1,5 @@
+#![allow(needless_range_loop)]
+
 use std::ptr;
 
 pub trait Sort<T: Ord> {
