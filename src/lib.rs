@@ -4,6 +4,7 @@
 
 extern crate regex;
 extern crate alloc;
+extern crate rand;
 
 pub mod bowling_kata;
 pub mod string_calc_kata;
