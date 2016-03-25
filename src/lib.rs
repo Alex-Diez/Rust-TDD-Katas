@@ -16,3 +16,4 @@ pub mod lcd_kata;
 pub mod thread_counting_kata;
 pub mod inc_dec_numbers_kata;
 pub mod sorting_kata;
+pub mod bst_kata;

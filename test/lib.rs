@@ -17,3 +17,4 @@ mod lcd_kata;
 mod thread_counting_kata;
 mod inc_dec_numbers_kata;
 mod sorting_kata;
+mod bst_kata;

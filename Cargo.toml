@@ -1,6 +1,6 @@
 [package]
 name = "tdd-kata"
-version = "0.0.10"
+version = "0.0.11"
 authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
 
 [lib]
@@ -15,7 +15,7 @@ git = "https://github.com/Alex-Diez/stainless.git"
 branch = "master"
 
 [dependencies]
-clippy = "0.0.51"
+clippy = "0.0.56"
 expectest = "0.4.1"
 regex = "0.1.52"
 regex_macros = "0.1.30"
