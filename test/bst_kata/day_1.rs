@@ -15,27 +15,27 @@ describe! search_tree {
         expect!(is_empty).to(be_true());
     }
 
-    it "should increase size when put" {
+    ignore "should increase size when put" {
         tree.put(1, 1);
         expect!(tree.len()).to(be_equal_to(1));
     }
 
-    it "should not increase size when put the same key" {
+    ignore "should not increase size when put the same key" {
         tree.put(1, 1);
         tree.put(1, 2);
         expect!(tree.len()).to(be_equal_to(1));
     }
 
-    it "should contain put key" {
+    ignore "should contain put key" {
         tree.put(1, 1);
         expect!(tree.contains(1)).to(be_true());
     }
 
-    it "should not contain not put key" {
+    ignore "should not contain not put key" {
         expect!(tree.contains(2)).to(be_false());
     }
 
-    it "should contain all put keys" {
+    ignore "should contain all put keys" {
         tree.put(1, 1);
         tree.put(2, 2);
         tree.put(3, 3);

@@ -1,4 +1,6 @@
-struct Node {
+#![allow(unused_variables)]
+
+/*struct Node {
     key: isize,
     left: Option<Node>,
     right: Option<Node>
@@ -13,11 +15,11 @@ impl Node {
             right: None
         }
     }
-}
+}*/
 
 pub struct BinarySearchTree {
     len: usize,
-    root: Option<Node>
+//    root: Option<Node>
 }
 
 impl Default for BinarySearchTree {
@@ -25,7 +27,7 @@ impl Default for BinarySearchTree {
     fn default() -> BinarySearchTree {
         BinarySearchTree {
             len: 0,
-            root: None
+//            root: None
         }
     }
 }
@@ -58,8 +60,8 @@ impl BinarySearchTree {
         }*/
     }
 
-    fn put_node(&mut self, key: isize, node: &Option<Node>) {
-        /*match *node {
+/*    fn put_node(&mut self, key: isize, node: &Option<Node>) {
+        match *node {
             Some(node) => {
                 if node.key < key {
                     match node.left {
@@ -75,16 +77,16 @@ impl BinarySearchTree {
                 }
             },
             None => {},
-        }*/
-    }
+        }
+    }*/
 
     pub fn contains(&self, key: isize) -> bool {
         // self.contains_node(key, &(self.root))
         false
     }
 
-    fn contains_node(&self, key: isize, node: &Option<Node>) -> bool {
-        /*match *node {
+/*    fn contains_node(&self, key: isize, node: &Option<Node>) -> bool {
+        match *node {
             Some(node) => {
                 if node.key < key {
                     match node.left {
@@ -103,7 +105,7 @@ impl BinarySearchTree {
                 }
             },
             None => false,
-        }*/
+        }
         false
-    }
+    }*/
 }
