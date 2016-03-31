@@ -18,4 +18,4 @@ mod thread_counting_kata;
 mod inc_dec_numbers_kata;
 mod sorting_kata;
 mod bst_kata;
-mod dfs_kata;
+mod graph_search_kata;

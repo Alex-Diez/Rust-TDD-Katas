@@ -1,4 +1,4 @@
-pub use tdd_kata::dfs_kata::day_1::{UnidirectedGraph, DepthFirstSearch};
+pub use tdd_kata::graph_search_kata::day_1::{UnidirectedGraph, DepthFirstSearch};
 
 pub use expectest::prelude::{be_equal_to, be_true, be_false};
 
