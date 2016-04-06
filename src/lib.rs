@@ -18,3 +18,4 @@ pub mod inc_dec_numbers_kata;
 pub mod sorting_kata;
 pub mod bst_kata; // BUG https://github.com/rust-lang/rust/issues/32326 restart later
 pub mod graph_search_kata;
+pub mod directed_graph_kata;

@@ -1,6 +1,6 @@
 [package]
 name = "tdd-kata"
-version = "0.0.12"
+version = "0.0.13"
 authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
 
 [lib]
