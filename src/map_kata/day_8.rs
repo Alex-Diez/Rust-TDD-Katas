@@ -1,4 +1,4 @@
-#![allow(new_without_default)]
+#![allow(new_without_default,transmute_ptr_to_ref)]
 
 use std::mem;
 use std::boxed::Box;
