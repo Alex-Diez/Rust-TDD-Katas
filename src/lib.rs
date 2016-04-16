@@ -1,6 +1,8 @@
 #![feature(plugin,core_intrinsics,alloc,shared)]
-#![plugin(regex_macros,clippy)]
-#![allow(regex_macro,expl_impl_clone_on_copy)]
+#![cfg_attr(feature="clippy", feature(plugin))]
+#![cfg_attr(feature="clippy", plugin(clippy))]
+#![plugin(regex_macros)]
+#![allow(regex_macro)]
 
 extern crate regex;
 extern crate alloc;
@@ -19,3 +21,4 @@ pub mod sorting_kata;
 pub mod bst_kata; // BUG https://github.com/rust-lang/rust/issues/32326 restart later
 pub mod graph_search_kata;
 pub mod directed_graph_kata;
+pub mod mst_kata;

@@ -20,3 +20,4 @@ mod sorting_kata;
 mod bst_kata;
 mod graph_search_kata;
 mod directed_graph_kata;
+mod mst_kata;
