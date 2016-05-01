@@ -1,8 +1,6 @@
 #![feature(plugin,core_intrinsics,alloc,shared)]
-#![cfg_attr(feature="clippy", feature(plugin))]
-#![cfg_attr(feature="clippy", plugin(clippy))]
-#![plugin(regex_macros)]
-#![allow(regex_macro)]
+#![plugin(regex_macros,clippy)]
+#![allow(regex_macro,expl_impl_clone_on_copy)]
 
 extern crate regex;
 extern crate alloc;

@@ -90,29 +90,29 @@ impl LazyMst {
 
     pub fn new(graph: &EdgeWeightedGraph) -> Result<LazyMst, ()> {
         if graph.vertices() > 0 {
-            let mut lazyMst = LazyMst {
+            let mut lazy_mst = LazyMst {
                 marked: HashSet::default(),
                 pq: BinaryHeap::default(),
                 weight: 0
             };
             let mut mst = VecDeque::default();
-            lazyMst.visit(graph, *graph.edges.keys().next().unwrap());
-            while let Some(edge) = lazyMst.pq.pop() {
+            lazy_mst.visit(graph, *graph.edges.keys().next().unwrap());
+            while let Some(edge) = lazy_mst.pq.pop() {
                 let v = edge.either();
                 let w = edge.other(v);
-                if !lazyMst.marked.contains(&v)
-                        || !lazyMst.marked.contains(&w) {
+                if !lazy_mst.marked.contains(&v)
+                        || !lazy_mst.marked.contains(&w) {
                     mst.push_back(edge);
-                    if !lazyMst.marked.contains(&v) {
-                        lazyMst.visit(graph, v);
+                    if !lazy_mst.marked.contains(&v) {
+                        lazy_mst.visit(graph, v);
                     }
-                    if !lazyMst.marked.contains(&w) {
-                        lazyMst.visit(graph, w);
+                    if !lazy_mst.marked.contains(&w) {
+                        lazy_mst.visit(graph, w);
                     }
                 }
             }
-            lazyMst.weight = mst.iter().fold(0, |acc, e| acc + e.weight);
-            Ok(lazyMst)
+            lazy_mst.weight = mst.iter().fold(0, |acc, e| acc + e.weight);
+            Ok(lazy_mst)
         }
         else {
             Err(())
