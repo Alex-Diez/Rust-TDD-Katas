@@ -57,7 +57,7 @@ impl DepthFirstSearch {
         if let Some(adj) = graph.adjacent_to(v) {
             for w in adj {
                 if !(*(self.marked.entry(*w).or_insert(false))) {
-                    self.search(&graph, *w);
+                    self.search(graph, *w);
                 }
             }
         }

@@ -1,4 +1,4 @@
-#![allow(needless_range_loop)]
+#![allow(needless_range_loop, not_unsafe_ptr_arg_deref)]
 
 use std::ptr;
 

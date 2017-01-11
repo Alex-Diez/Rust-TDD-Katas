@@ -1,5 +1,4 @@
-#![allow(new_without_default)]
-
+#[derive(Default)]
 pub struct Map {
     elems: Vec<i32>
 }

@@ -1,5 +1,4 @@
-#![allow(new_without_default)]
-
+#[derive(Default)]
 #[allow(dead_code)]
 pub struct Game {
     score: i32,

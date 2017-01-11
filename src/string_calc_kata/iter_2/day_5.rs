@@ -1,10 +1,9 @@
-#![allow(new_without_default)]
-
 use std::iter::Peekable;
 use std::str::Chars;
 use std::result::Result;
 use std::num::ParseFloatError;
 
+#[derive(Default)]
 pub struct Calculator;
 /*
 add: Box::new(

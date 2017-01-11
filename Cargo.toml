@@ -10,12 +10,11 @@ name = "tdd_kata"
 name = "test"
 path = "test/lib.rs"
 
-[dependencies.stainless]
-git = "https://github.com/Alex-Diez/stainless.git"
-branch = "master"
+[dev-dependencies]
+stainless = "*"
 
 [dependencies]
-clippy = "0.0.64"
+clippy = "*"
 expectest = "0.4.1"
 regex = "0.1.52"
 regex_macros = "0.1.30"

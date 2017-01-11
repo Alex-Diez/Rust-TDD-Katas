@@ -1,5 +1,3 @@
-#![allow(new_without_default)]
-
 use std::option::Option;
 use std::error::Error;
 use std::result::Result;
@@ -41,7 +39,7 @@ impl From<char> for Number {
 
 pub type DisplayResult = Result<Vec<Number>, DisplayError>;
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct DisplayError;
 
 impl DisplayError {
@@ -65,6 +63,7 @@ impl fmt::Display for DisplayError {
     }
 }
 
+#[derive(Default)]
 pub struct Display {
     input: Option<&'static str>
 }

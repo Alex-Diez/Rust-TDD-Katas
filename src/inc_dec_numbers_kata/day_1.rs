@@ -16,6 +16,7 @@ enum Type {
     Line
 }
 
+#[derive(Default)]
 pub struct Checker;
 
 impl Checker {
@@ -46,7 +47,7 @@ impl Checker {
                     t = Type::Fall;
                 }
             }
-            num = num / 10;
+            num /= 10;
             prev = current;
         }
         match t {

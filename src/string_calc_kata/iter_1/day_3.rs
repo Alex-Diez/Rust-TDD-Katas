@@ -31,8 +31,8 @@ fn parse_arg(peekable: &mut Peekable<Chars>) -> f32 {
         }
         let digit = v.to_digit(10).unwrap() as f32;
         if point {
-            accumulator = accumulator + digit*exponent;
-            exponent = exponent * 0.1;
+            accumulator += digit*exponent;
+            exponent *= 0.1;
         }
         else {
             accumulator = accumulator*10.0 + digit;

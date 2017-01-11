@@ -1,5 +1,3 @@
-#![allow(new_without_default)]
-
 use std::str::FromStr;
 use std::result::Result;
 use std::error::Error;
@@ -75,6 +73,7 @@ impl From<char> for Digit {
     }
 }
 
+#[derive(Default)]
 pub struct Display {
     data: Option<&'static str>
 }

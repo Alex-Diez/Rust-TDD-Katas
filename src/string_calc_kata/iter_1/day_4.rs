@@ -30,8 +30,8 @@ fn parse_arg(iter: &mut Peekable<Chars>) -> f32 {
         }
         let value = c.to_digit(10).unwrap() as f32;
         if has_point {
-            accumulator = accumulator + value * exponent;
-            exponent = exponent * 0.1;
+            accumulator += value * exponent;
+            exponent *= 0.1;
         }
         else {
             accumulator = accumulator*10.0 + value;

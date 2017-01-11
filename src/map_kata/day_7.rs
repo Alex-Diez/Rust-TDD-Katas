@@ -1,4 +1,4 @@
-#![allow(new_without_default,transmute_ptr_to_ref)]
+#![allow(transmute_ptr_to_ref)]
 
 use std::mem;
 use std::boxed::Box;
@@ -73,6 +73,7 @@ impl Clone for Link {
 
 const CAPACITY: usize = 16;
 
+#[derive(Default)]
 pub struct Map {
     size: usize,
     table: Vec<Link>

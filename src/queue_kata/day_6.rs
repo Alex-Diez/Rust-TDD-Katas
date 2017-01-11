@@ -1,5 +1,3 @@
-#![allow(new_without_default)]
-
 use std::boxed::Box;
 use std::ptr::Shared;
 use std::option::Option;
@@ -16,6 +14,7 @@ impl Node {
     }
 }
 
+#[derive(Default)]
 pub struct Queue {
     size: usize,
     head: Option<Box<Node>>,

@@ -1,5 +1,3 @@
-#![allow(new_without_default)]
-
 use std::result::Result;
 use std::error::Error;
 use std::str::FromStr;
@@ -97,6 +95,7 @@ impl fmt::Display for DisplayError {
     }
 }
 
+#[derive(Default)]
 pub struct Display {
     data: Option<&'static str>
 }

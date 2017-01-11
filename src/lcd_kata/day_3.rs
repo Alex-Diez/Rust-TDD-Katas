@@ -1,5 +1,3 @@
-#![allow(new_without_default)]
-
 use self::Number::{One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Zero};
 
 #[derive(PartialEq, Debug)]
@@ -35,6 +33,7 @@ impl From<char> for Number {
     }
 }
 
+#[derive(Default)]
 pub struct Display {
     input: Option<&'static str>
 }

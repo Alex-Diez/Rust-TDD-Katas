@@ -1,3 +1,5 @@
+#![allow(not_unsafe_ptr_arg_deref)]
+
 use std::ptr;
 use std::mem;
 use std::cmp;

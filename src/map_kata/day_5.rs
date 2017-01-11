@@ -1,4 +1,4 @@
-#![allow(new_without_default,transmute_ptr_to_ref)]
+#![allow(transmute_ptr_to_ref)]
 
 use std::mem;
 use std::option::Option;
@@ -67,6 +67,7 @@ impl Clone for BucketLink {
     }
 }
 
+#[derive(Default)]
 pub struct Map {
     size: usize,
     table: Vec<BucketLink>

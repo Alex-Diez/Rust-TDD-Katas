@@ -1,4 +1,4 @@
-#![allow(unused_variables, dead_code, unused_imports, unused_variables, new_without_default)]
+#![allow(unused_variables, dead_code, unused_imports, unused_variables)]
 
 use std::collections::HashSet;
 use std::sync::{Barrier, Arc, Mutex};
@@ -6,7 +6,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 
 use std::thread;
 
-#[derive(Clone)]
+#[derive(Clone, Default)]
 pub struct Counter {
     numbers: Vec<i32>,
     threads_name: HashSet<Option<String>>

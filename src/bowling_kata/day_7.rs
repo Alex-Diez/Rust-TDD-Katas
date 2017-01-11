@@ -1,5 +1,4 @@
-#![allow(new_without_default)]
-
+#[derive(Default)]
 pub struct Game {
 	rolls: Vec<i32>,
 }

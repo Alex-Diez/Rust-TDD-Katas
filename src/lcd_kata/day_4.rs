@@ -1,5 +1,3 @@
-#![allow(new_without_default)]
-
 use std::str::Chars;
 
 use self::DisplayResult::{Output, NotANumber};
@@ -60,6 +58,7 @@ impl From<char> for Number {
     }
 }
 
+#[derive(Default)]
 pub struct Display {
     input: Option<&'static str>
 }

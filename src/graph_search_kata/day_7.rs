@@ -84,7 +84,7 @@ impl BreadthFirstSearch {
             let mut bfs = BreadthFirstSearch {
                 marked: HashSet::with_capacity(graph.vertices())
             };
-            bfs.search(&graph, src);
+            bfs.search(graph, src);
             Some(bfs)
         }
         else {
