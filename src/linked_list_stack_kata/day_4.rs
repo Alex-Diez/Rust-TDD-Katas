@@ -2,17 +2,17 @@ use std::mem;
 
 use std::default::Default;
 
-struct Node<E> {
-    elem: E,
-    next: Link<E>
+struct Node {
+    elem: i32,
+    next: Link
 }
 
-enum Link<E> {
+enum Link {
     Empty,
-    Cons(Box<Node<E>>)
+    Cons(Box<Node>)
 }
 
-impl <E> Default for Link<E> {
+impl Default for Link {
 
     fn default() -> Self {
         Link::Empty
@@ -20,26 +20,26 @@ impl <E> Default for Link<E> {
 }
 
 #[derive(Default)]
-pub struct Stack<E> {
-    head: Link<E>
+pub struct Stack {
+    head: Link
 }
 
-impl <E> Stack<E> {
+impl Stack {
 
     pub fn new() -> Self {
         Stack { head: Link::Empty }
     }
 
-    pub fn push(&mut self, elem: E) {
-        let node = Node {
+    pub fn push(&mut self, elem: i32) {
+        let node = Box::new(Node {
             elem: elem,
             next: mem::replace(&mut self.head, Link::Empty)
-        };
+        });
 
-        self.head = Link::Cons(Box::new(node));
+        self.head = Link::Cons(node);
     }
 
-    pub fn pop(&mut self) -> Option<E> {
+    pub fn pop(&mut self) -> Option<i32> {
         match mem::replace(&mut self.head, Link::Empty) {
             Link::Empty => None,
             Link::Cons(boxed) => {
@@ -53,12 +53,11 @@ impl <E> Stack<E> {
 
 #[cfg(test)]
 pub mod tests {
-    #[allow(unused_imports)]
     use super::Stack;
 
     #[test]
-    fn creates_an_empty() {
-        let mut stack: Stack<i32> = Stack::new();
+    fn creates_an_empty_stack() {
+        let mut stack = Stack::new();
 
         assert_eq!(stack.pop(), None);
     }
