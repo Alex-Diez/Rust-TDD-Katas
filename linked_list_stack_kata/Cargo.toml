@@ -1,0 +1,8 @@
+[package]
+name = "linked-list-stack-kata"
+version = "0.0.1"
+authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
+workspace = ".."
+
+[lib]
+name = "linked_list_stack_kata"

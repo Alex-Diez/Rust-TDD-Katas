@@ -20,4 +20,4 @@ pub mod bst_kata; // BUG https://github.com/rust-lang/rust/issues/32326 restart 
 pub mod graph_search_kata;
 pub mod directed_graph_kata;
 pub mod mst_kata;
-pub mod linked_list_stack_kata;
+//pub mod linked_list_stack_kata;

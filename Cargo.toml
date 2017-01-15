@@ -1,24 +1,27 @@
-[package]
-name = "tdd-kata"
-version = "0.0.14"
-authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
+#[package]
+#name = "tdd-kata"
+#version = "0.0.14"
+#authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
+#
+#[lib]
+#name = "tdd_kata"
 
-[lib]
-name = "tdd_kata"
+[workspace]
+members = ["./linked_list_stack_kata"]
 
 #[[test]]
 #name = "test"
 #path = "test/lib.rs"
 
-[dev-dependencies]
-stainless = "*"
-
-[dependencies]
-clippy = "0.0.107"
-expectest = "0.4.1"
-regex = "0.1.52"
-regex_macros = "0.1.30"
-rand = "0.3.14"
-
-[features]
-default=[]
+#[dev-dependencies]
+#stainless = "*"
+#
+#[dependencies]
+#clippy = "0.0.107"
+#expectest = "0.4.1"
+#regex = "0.1.52"
+#regex_macros = "0.1.30"
+#rand = "0.3.14"
+#
+#[features]
+#default=[]
