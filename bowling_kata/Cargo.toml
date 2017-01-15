@@ -1,0 +1,8 @@
+[package]
+name = "bowling-kata"
+version = "0.0.1"
+authors = ["Alex-Diez <alexvic.amatory@gmail.com>"]
+workspace = ".."
+
+[lib]
+name = "bowling_kata"

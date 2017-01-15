@@ -7,7 +7,6 @@ extern crate tdd_kata;
 extern crate expectest;
 pub extern crate rand;
 
-mod bowling_kata;
 mod string_calc_kata;
 mod lexer_sql_kata;
 mod stack_kata;
