@@ -1,0 +1,8 @@
+[package]
+name = "advanced-stack-kata"
+version = "0.0.1"
+authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
+workspace = ".."
+
+[lib]
+name = "advanced_stack_kata"

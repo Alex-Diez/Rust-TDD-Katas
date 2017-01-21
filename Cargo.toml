@@ -7,7 +7,11 @@
 #name = "tdd_kata"
 
 [workspace]
-members = ["./linked_list_stack_kata", "./bowling_kata"]
+members = [
+    "./linked_list_stack_kata",
+    "./bowling_kata",
+    "./advanced_stack_kata"
+]
 
 #[[test]]
 #name = "test"
