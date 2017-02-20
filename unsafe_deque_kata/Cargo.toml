@@ -1,0 +1,8 @@
+[package]
+name = "unsafe-deque-kata"
+version = "0.0.1"
+authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
+workspace = ".."
+
+[lib]
+name = "unsafe_deque_kata"
