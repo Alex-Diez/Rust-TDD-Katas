@@ -13,7 +13,8 @@ members = [
     "./advanced_stack_kata",
     "./persistent_list_kata",
     "./deque_kata",
-    "./unsafe_deque_kata"
+    "./unsafe_deque_kata",
+    "./string_calc_kata"
 ]
 
 #[[test]]
