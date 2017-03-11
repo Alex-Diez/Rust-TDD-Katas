@@ -39,3 +39,38 @@ fn parse_arg(iter: &mut Peekable<Chars>) -> Result<f64, ParseFloatError> {
     }
     number.iter().cloned().collect::<String>().parse::<f64>()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn should_evaluate_float_number() {
+        assert_eq!(evaluate("32435.246"), Ok(32435.246));
+    }
+
+    #[test]
+    fn should_evaluate_add_operation() {
+        assert_eq!(evaluate("35435.657+213.546"), Ok(35649.203));
+    }
+
+    #[test]
+    fn should_evaluate_sub_operation() {
+        assert_eq!(evaluate("3465.6757-324.2346"), Ok(3141.4411));
+    }
+
+    #[test]
+    fn should_evaluate_mul_operation() {
+        assert_eq!(evaluate("354.76×25.2"), Ok(8939.952));
+    }
+
+    #[test]
+    fn should_evaluate_div_operation() {
+        assert_eq!(evaluate("3254.546÷32.32"), Ok(100.69758663366336));
+    }
+
+    #[test]
+    fn should_evaluate_sequence_of_operations() {
+        assert_eq!(evaluate("3254+324×23-461.125×2+4.248÷23-461×1.25+48"), Ok(9255.684695652173));
+    }
+}

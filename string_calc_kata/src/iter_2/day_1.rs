@@ -33,3 +33,23 @@ fn parse_term(iter: &mut Peekable<Chars>) -> Result<f32, ParseFloatError> {
     }
     data.iter().cloned().collect::<String>().parse::<f32>()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn should_evaluate_float_number() {
+        assert_eq!(evaluate("32435.246"), Ok(32435.246));
+    }
+
+    #[test]
+    fn should_evaluate_add_operation() {
+        assert_eq!(evaluate("35435.657+213.546"), Ok(35649.203));
+    }
+
+    #[test]
+    fn should_evaluate_sub_operation() {
+        assert_eq!(evaluate("3465.6757-324.2346"), Ok(3141.4411));
+    }
+}
