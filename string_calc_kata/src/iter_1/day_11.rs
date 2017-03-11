@@ -73,3 +73,48 @@ fn do_division(value: f64, iter: &mut Peekable<Chars>) -> Result<f64, ParseFloat
     skip_symbol(&mut iter.by_ref());
     Ok(value / try!(parse_arg(&mut iter.by_ref())))
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_eval_simple_num() {
+        assert_eq!(evaluate("1"), Ok(1.0));
+    }
+
+    #[test]
+    fn test_eval_big_num() {
+        assert_eq!(evaluate("10000"), Ok(10000.0));
+    }
+
+    #[test]
+    fn test_eval_real_num() {
+        assert_eq!(evaluate("10.254"), Ok(10.254));
+    }
+
+    #[test]
+    fn test_eval_add() {
+        assert_eq!(evaluate("10+2"), Ok(12.0));
+    }
+
+    #[test]
+    fn test_eval_sub() {
+        assert_eq!(evaluate("10-2"), Ok(8.0));
+    }
+
+    #[test]
+    fn test_eval_mul() {
+        assert_eq!(evaluate("10×2"), Ok(20.0));
+    }
+
+    #[test]
+    fn test_eval_div() {
+        assert_eq!(evaluate("10÷2"), Ok(5.0));
+    }
+
+    #[test]
+    fn test_eval_few_op() {
+        assert_eq!(evaluate("10+2-1"), Ok(11.0));
+    }
+}
