@@ -99,8 +99,8 @@ mod tests {
         let mut game = Game::new();
 
         roll_strike(&mut game);
-        game.roll(3);
         game.roll(4);
+        game.roll(3);
         roll_many(&mut game, 16, 0);
 
         assert_eq!(game.score(), 24);
