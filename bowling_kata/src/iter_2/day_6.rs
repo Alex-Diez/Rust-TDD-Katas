@@ -4,9 +4,7 @@ pub struct Game {
 
 impl Game {
     pub fn new() -> Game {
-        Game {
-            pins: Vec::with_capacity(20)
-        }
+        Game { pins:  Vec::with_capacity(20) }
     }
 
     pub fn roll(&mut self, pin: u32) {
@@ -52,7 +50,7 @@ impl Game {
 mod tests {
     use super::*;
 
-    fn roll_many(game: &mut Game, times: usize, pin: u32) {
+    fn roll_many(game: &mut Game, times: u32, pin: u32) {
         for _ in 0..times {
             game.roll(pin);
         }
