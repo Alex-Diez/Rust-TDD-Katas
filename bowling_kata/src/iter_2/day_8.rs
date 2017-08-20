@@ -57,8 +57,8 @@ mod tests {
     }
 
     fn roll_spare(game: &mut Game) {
-        game.roll(5);
-        game.roll(5);
+        game.roll(6);
+        game.roll(4);
     }
 
     fn roll_strike(game: &mut Game) {
