@@ -9,3 +9,6 @@ cargo
 #idea files
 .idea/
 *.iml
+
+#vscode
+.vscode/

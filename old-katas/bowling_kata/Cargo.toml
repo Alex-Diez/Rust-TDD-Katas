@@ -6,6 +6,7 @@ workspace = ".."
 
 [lib]
 name = "bowling_kata"
+path = "src/lib.rs"
 
 [dependencies]
 clippy = {version = "*", optional = true}

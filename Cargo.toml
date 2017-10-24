@@ -1,29 +1,4 @@
-[package]
-name = "tdd-kata"
-version = "0.0.14"
-authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
-
-#[lib]
-#name = "tdd_kata"
-
 [workspace]
 members = [
-    "./linked_list_stack_kata",
-    "./bowling_kata",
-    "./advanced_stack_kata",
-    "./persistent_list_kata",
-    "./deque_kata",
-    "./unsafe_deque_kata",
-    "./string_calc_kata",
-    "./queue_kata"
+    "./bowling_game_kata"
 ]
-
-#[[test]]
-#name = "test"
-#path = "test/lib.rs"
-
-[dependencies]
-clippy = {version = "*", optional = true}
-
-[features]
-default = []
