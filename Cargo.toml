@@ -1,4 +1,5 @@
 [workspace]
 members = [
-    "./bowling_game_kata"
+    "./bowling_game_kata",
+    "./linked_stack_kata"
 ]
