@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "./bowling_game_kata",
-    "./linked_stack_kata"
+    "./linked_stack_kata",
+    "./array_linked_queue_kata"
 ]

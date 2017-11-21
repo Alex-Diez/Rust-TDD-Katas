@@ -1,0 +1,8 @@
+[package]
+name = "array-linked-queue-kata"
+version = "0.0.2"
+authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
+workspace = ".."
+
+[lib]
+name = "array_linked_queue_kata"
