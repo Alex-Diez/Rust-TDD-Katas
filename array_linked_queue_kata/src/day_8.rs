@@ -1,50 +1,32 @@
 use std::rc::Rc;
 use std::cell::RefCell;
 
+const SEGMENT_SIZE: usize = 16;
+
 type SegmentLink = Rc<RefCell<Segment>>;
 
-#[derive(Debug, PartialEq)]
+#[derive(PartialEq)]
 struct Segment {
     head: usize,
     tail: usize,
-    items: [i32; 16],
+    items: [i32; SEGMENT_SIZE],
     next: Option<SegmentLink>
 }
 
 impl Segment {
     fn new() -> SegmentLink {
-        Rc::new(
-            RefCell::new(
-                Segment {
-                    head: 0,
-                    tail: 0,
-                    items: [0; 16],
-                    next: None
-                }
-            )
-        )
+        Rc::new(RefCell::new(Segment { head: 0, tail: 0, items: [0; 16], next: None }))
     }
 
     fn with(item: i32) -> SegmentLink {
         let segment = Segment::new();
-        let tail = segment.borrow().tail;
         segment.borrow_mut().tail += 1;
-        segment.borrow_mut().items[tail] = item;
+        segment.borrow_mut().items[0] = item;
         segment
     }
 
-    fn remove_first(&mut self) -> Result<i32, Option<SegmentLink>> {
-        if self.head == self.tail {
-            Err(self.next.take())
-        } else {
-            let head = self.head;
-            self.head += 1;
-            Ok(self.items[head])
-        }
-    }
-
-    fn add_last(&mut self, item: i32) -> Result<(), SegmentLink> {
-        if self.tail == 16 {
+    fn add(&mut self, item: i32) -> Result<(), SegmentLink> {
+        if self.tail == SEGMENT_SIZE {
             let segment = Segment::with(item);
             self.next = Some(segment.clone());
             Err(segment)
@@ -53,6 +35,16 @@ impl Segment {
             self.tail += 1;
             self.items[tail] = item;
             Ok(())
+        }
+    }
+
+    fn remove(&mut self) -> Result<i32, Option<SegmentLink>> {
+        if self.tail == self.head {
+            Err(self.next.take())
+        } else {
+            let head = self.head;
+            self.head += 1;
+            Ok(self.items[head])
         }
     }
 }
@@ -65,14 +57,14 @@ pub struct ArrayLinkedQueue {
 impl ArrayLinkedQueue {
     pub fn dequeue(&mut self) -> Option<i32> {
         self.first.take().and_then(|first| {
-            match first.borrow_mut().remove_first() {
+            match first.borrow_mut().remove() {
                 Ok(item) => {
                     self.first = Some(first.clone());
                     Some(item)
-                },
+                }
                 Err(Some(next)) => {
                     self.first = Some(next.clone());
-                    next.borrow_mut().remove_first().ok()
+                    next.borrow_mut().remove().ok()
                 }
                 Err(_) => None
             }
@@ -82,16 +74,16 @@ impl ArrayLinkedQueue {
     pub fn enqueue(&mut self, item: i32) {
         match self.insert(item) {
             Ok(()) => (),
-            Err(segment) => self.last = Some(segment)
+            Err(last) => self.last = Some(last.clone())
         }
     }
 
     fn insert(&mut self, item: i32) -> Result<(), SegmentLink> {
-        let last = self.last.get_or_insert(Segment::new());
-        if self.first.as_ref().map_or(true, |first| first == last) {
-            self.first = Some(last.clone());
+        let segment = self.last.get_or_insert(Segment::new());
+        if self.first.as_ref().map_or(true, |first| first == segment) {
+            self.first = Some(segment.clone());
         }
-        last.borrow_mut().add_last(item)
+        segment.borrow_mut().add(item)
     }
 }
 
@@ -106,7 +98,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn enqueue_dequeue_many() {
+    fn enqueue_dequeue_many_items() {
         let mut queue = ArrayLinkedQueue::default();
 
         queue.enqueue(1);
@@ -123,11 +115,11 @@ mod tests {
     fn enqueue_dequeue_more_than_segment() {
         let mut queue = ArrayLinkedQueue::default();
 
-        for i in 0..(2 * 16 + 1) {
+        for i in 0..(2 * SEGMENT_SIZE + 1) {
             queue.enqueue(i as i32);
         }
 
-        for i in 0..(2 * 16 + 1) {
+        for i in 0..(2 * SEGMENT_SIZE + 1) {
             assert_eq!(queue.dequeue(), Some(i as i32));
         }
         assert_eq!(queue.dequeue(), None);
@@ -137,7 +129,7 @@ mod tests {
     fn enqueue_dequeue_one_by_one_more_than_segment() {
         let mut queue = ArrayLinkedQueue::default();
 
-        for i in 0..(16 + 1) {
+        for i in 0..(2 * SEGMENT_SIZE + 1) {
             queue.enqueue(i as i32);
             assert_eq!(queue.dequeue(), Some(i as i32));
             assert_eq!(queue.dequeue(), None);
