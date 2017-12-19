@@ -1,0 +1,8 @@
+[package]
+name = "algebraic-expression-parser-kata"
+version = "0.0.2"
+authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
+workspace = ".."
+
+[lib]
+name = "algebraic_expression_parser_kata"

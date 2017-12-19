@@ -3,5 +3,6 @@ members = [
     "./bowling_game_kata",
     "./linked_stack_kata",
     "./array_linked_queue_kata",
-    "./string_calculator_kata"
+    "./string_calculator_kata",
+    "./algebraic_expression_parser_kata"
 ]
