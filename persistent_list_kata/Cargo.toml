@@ -1,0 +1,8 @@
+[package]
+name = "persistent-list-kata"
+version = "0.0.2"
+authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
+workspace = ".."
+
+[lib]
+name = "persistent_list_kata"

@@ -5,5 +5,6 @@ members = [
     "./array_linked_queue_kata",
     "./string_calculator_kata",
     "./algebraic_expression_parser_kata",
-    "./string_compression_kata"
+    "./string_compression_kata",
+    "./persistent_list_kata"
 ]
