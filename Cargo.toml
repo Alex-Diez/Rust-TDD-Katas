@@ -6,5 +6,6 @@ members = [
     "./string_calculator_kata",
     "./algebraic_expression_parser_kata",
     "./string_compression_kata",
-    "./persistent_list_kata"
+    "./persistent_list_kata",
+    "./add_two_numbers_kata"
 ]

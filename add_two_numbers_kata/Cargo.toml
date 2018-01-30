@@ -1,0 +1,8 @@
+[package]
+name = "add-two-numbers-kata"
+version = "0.0.2"
+authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
+workspace = ".."
+
+[lib]
+name = "add_two_numbers_kata"
