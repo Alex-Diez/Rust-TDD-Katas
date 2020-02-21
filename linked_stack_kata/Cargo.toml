@@ -2,7 +2,7 @@
 name = "linked-stack-kata"
 version = "0.0.2"
 authors = ["Alex-Diez <alex.dukhno@icloud.com>"]
-workspace = "../.."
+workspace = ".."
 
 [lib]
 name = "linked_stack_kata"
