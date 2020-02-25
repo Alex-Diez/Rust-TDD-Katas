@@ -4,20 +4,20 @@ type Link<T> = Option<Box<Node<T>>>;
 
 struct Node<T> {
     item: T,
-    next: Link<T>,
+    next: Link<T>
 }
 
-impl <T> Node<T> {
+impl<T> Node<T> {
     fn new(item: T, next: Link<T>) -> Link<T> {
-        Some(Box::new(Node { item, next }))
+        Some(Box::new(Node{ item, next }))
     }
 }
 
 pub struct Stack<T> {
-    head: Link<T>,
+    head: Link<T>
 }
 
-impl <T> Stack<T> {
+impl<T> Stack<T> {
     pub fn pop(&mut self) -> Option<T> {
         self.head.take().map(|node| {
             self.head = node.next;
@@ -26,25 +26,34 @@ impl <T> Stack<T> {
     }
 
     pub fn push(&mut self, item: T) {
-        match self.head.take() {
-            None => self.head = Node::new(item, None),
-            Some(node) => self.head = Node::new(item, Some(node))
-        }
+        self.head = Node::new(item, self.head.take());
     }
 }
 
-impl <T> Default for Stack<T> {
+impl<T> Default for Stack<T> {
     fn default() -> Self {
-        Self { head: None }
+        Self{ head: None }
     }
 }
 
-impl <T> IntoIterator for Stack<T> {
+impl<T> FromIterator<T> for Stack<T> {
+    fn from_iter<II: IntoIterator<Item=T>>(iter: II) -> Self {
+        let mut stack = Stack::default();
+
+        for item in iter {
+            stack.push(item)
+        }
+
+        stack
+    }
+}
+
+impl<T> IntoIterator for Stack<T> {
     type Item = T;
     type IntoIter = StackIter<T>;
 
     fn into_iter(self) -> Self::IntoIter {
-        StackIter{ stack: self }
+        StackIter { stack: self }
     }
 }
 
@@ -52,7 +61,7 @@ pub struct StackIter<T> {
     stack: Stack<T>
 }
 
-impl <T> Iterator for StackIter<T> {
+impl<T> Iterator for StackIter<T> {
     type Item = T;
 
     fn next(&mut self) -> Option<Self::Item> {
@@ -60,18 +69,18 @@ impl <T> Iterator for StackIter<T> {
     }
 }
 
-impl <T> AsRef<Stack<T>> for Stack<T> {
-    fn as_ref(&self) -> &Stack<T> {
+impl<T> AsRef<Stack<T>> for Stack<T> {
+    fn as_ref(&self) -> &Self {
         self
     }
 }
 
-impl <'s, T> IntoIterator for &'s Stack<T> {
+impl<'s, T> IntoIterator for &'s Stack<T> {
     type Item = &'s T;
     type IntoIter = StackRefIter<'s, T>;
 
     fn into_iter(self) -> Self::IntoIter {
-        StackRefIter { node: self.head.as_ref().map(|node| &**node) }
+        StackRefIter { node: self.head.as_ref().map(|node| &**node)}
     }
 }
 
@@ -79,7 +88,7 @@ pub struct StackRefIter<'s, T> {
     node: Option<&'s Node<T>>
 }
 
-impl <'s, T> Iterator for StackRefIter<'s, T> {
+impl<'s, T> Iterator for StackRefIter<'s, T> {
     type Item = &'s T;
 
     fn next(&mut self) -> Option<Self::Item> {
@@ -90,7 +99,7 @@ impl <'s, T> Iterator for StackRefIter<'s, T> {
     }
 }
 
-impl <T> AsMut<Stack<T>> for Stack<T> {
+impl<T> AsMut<Stack<T>> for Stack<T> {
     fn as_mut(&mut self) -> &mut Self {
         self
     }
@@ -98,18 +107,18 @@ impl <T> AsMut<Stack<T>> for Stack<T> {
 
 impl <'s, T> IntoIterator for &'s mut Stack<T> {
     type Item = &'s mut T;
-    type IntoIter = StackMutRefIterator<'s, T>;
+    type IntoIter = StackMutRefIter<'s, T>;
 
     fn into_iter(self) -> Self::IntoIter {
-        StackMutRefIterator { node: self.head.as_mut().map(|node| &mut **node)}
+        StackMutRefIter { node: self.head.as_mut().map(|node| &mut **node)}
     }
 }
 
-pub struct StackMutRefIterator<'s, T> {
+pub struct StackMutRefIter<'s, T> {
     node: Option<&'s mut Node<T>>
 }
 
-impl <'s, T> Iterator for StackMutRefIterator<'s, T> {
+impl<'s, T> Iterator for StackMutRefIter<'s, T> {
     type Item = &'s mut T;
 
     fn next(&mut self) -> Option<Self::Item> {
@@ -120,13 +129,13 @@ impl <'s, T> Iterator for StackMutRefIterator<'s, T> {
     }
 }
 
-impl <T> FromIterator<T> for Stack<T> {
-    fn from_iter<II: IntoIterator<Item=T>>(iter: II) -> Self {
-        let mut stack: Stack<T> = Stack::default();
-        for item in iter {
-            stack.push(item);
+impl<T> Drop for Stack<T> {
+    fn drop(&mut self) {
+        let mut link = std::mem::replace(&mut self.head, None);
+
+        while let Some(mut node) = link {
+            link = std::mem::replace(&mut node.next, None)
         }
-        stack
     }
 }
 
@@ -142,13 +151,13 @@ mod tests {
     }
 
     #[test]
-    fn push_pop_one_item() {
+    fn push_pop_single_item() {
         let mut stack = Stack::default();
 
         stack.push(1);
 
         assert_eq!(stack.pop(), Some(1));
-        assert_eq!(stack.pop(), None)
+        assert_eq!(stack.pop(), None);
     }
 
     #[test]
