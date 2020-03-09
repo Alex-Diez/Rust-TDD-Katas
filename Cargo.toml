@@ -1,4 +1,5 @@
 [workspace]
 members = [
-    "linked_stack_kata"
+    "linked_stack_kata",
+    "persistent_list_kata",
 ]
