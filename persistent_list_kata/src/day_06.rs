@@ -53,6 +53,20 @@ impl<'l, T> Iterator for ListIter<'l, T> {
     }
 }
 
+impl<T> Drop for List<T> {
+    fn drop(&mut self) {
+        let mut link = self.head.take();
+
+        while let Some(node) = link {
+            if let Ok(mut node) = Rc::try_unwrap(node) {
+                link = node.next.take();
+            } else {
+                break;
+            }
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
