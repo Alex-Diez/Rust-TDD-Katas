@@ -2,4 +2,5 @@
 members = [
     "linked_stack_kata",
     "persistent_list_kata",
+    "safe_deque_kata",
 ]
