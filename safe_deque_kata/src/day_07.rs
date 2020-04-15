@@ -41,7 +41,7 @@ impl<T> Deque<T> {
         match self.head.take() {
             Some(old_head) => {
                 old_head.borrow_mut().prev = Some(new_head.clone());
-                new_head.borrow_mut().next = Some(old_head.clone());
+                new_head.borrow_mut().next = Some(old_head);
             },
             None => {
                 self.tail = Some(new_head.clone());
