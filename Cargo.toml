@@ -4,4 +4,5 @@ members = [
     "persistent_list_kata",
     "safe_deque_kata",
     "unsafe_deque_kata",
+    "binary_tree_kata",
 ]
