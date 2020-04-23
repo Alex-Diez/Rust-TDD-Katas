@@ -1,5 +1,6 @@
 use std::mem;
 use std::iter::FromIterator;
+use std::cmp::Ordering;
 
 type Link<K, V> = Option<Box<Node<K, V>>>;
 
@@ -16,37 +17,39 @@ impl<K: Ord, V> Node<K, V> {
     }
 
     fn find(&self, key: &K) -> Option<&V> {
-        if self.key == *key {
-            Some(&self.value)
-        } else if self.key < *key {
-            self.left.as_ref().and_then(|left| left.find(key))
-        } else {
-            self.right.as_ref().and_then(|right| right.find(key))
+        match self.key.cmp(key) {
+            Ordering::Equal => Some(&self.value),
+            Ordering::Less => self.left.as_ref().and_then(|left| left.find(key)),
+            Ordering::Greater => self.right.as_ref().and_then(|right| right.find(key))
         }
     }
 
     fn insert(&mut self, key: K, value: V) -> Option<V> {
-        if self.key < key {
-            match self.left.as_mut() {
-                None => {
-                    self.left = Node::new(key, value);
-                    None
+        match self.key.cmp(&key) {
+            Ordering::Less => {
+                match self.left.as_mut() {
+                    None => {
+                        self.left = Node::new(key, value);
+                        None
+                    }
+                    Some(left) => left.insert(key, value)
                 }
-                Some(left) => left.insert(key, value)
+            },
+            Ordering::Greater => {
+                match self.right.as_mut() {
+                    None => {
+                        self.right = Node::new(key, value);
+                        None
+                    },
+                    Some(right) => right.insert(key, value)
+                }
+            },
+            Ordering::Equal => {
+                let mut temp = unsafe { mem::zeroed() };
+                mem::swap(&mut temp, &mut self.value);
+                self.value = value;
+                Some(temp)
             }
-        } else if self.key > key {
-            match self.right.as_mut() {
-                None => {
-                    self.right = Node::new(key, value);
-                    None
-                },
-                Some(right) => right.insert(key, value)
-            }
-        } else {
-            let mut temp = unsafe { mem::zeroed() };
-            mem::swap(&mut temp, &mut self.value);
-            self.value = value;
-            Some(temp)
         }
     }
 

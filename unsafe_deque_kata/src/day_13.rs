@@ -10,7 +10,7 @@ struct Node<T> {
 
 impl<T> Node<T> {
     fn new(item: T) -> Box<Self> {
-        Box::new(Self { item: item, next: None, prev: None })
+        Box::new(Self { item, next: None, prev: None })
     }
 }
 

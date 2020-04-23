@@ -19,7 +19,7 @@ impl<K: Ord, V: Copy> Node<K, V> {
         match key.cmp(&self.key) {
             Ordering::Less => {
                 match self.left {
-                    Some(mut left) => unsafe { return left.as_mut().insert(key, value); },
+                    Some(mut left) => unsafe { left.as_mut().insert(key, value) },
                     None => {
                         self.left = NonNull::new(Box::into_raw(Node::new(key, value)));
                         None
@@ -33,7 +33,7 @@ impl<K: Ord, V: Copy> Node<K, V> {
             }
             Ordering::Greater => {
                 match self.right {
-                    Some(mut right) => unsafe { return right.as_mut().insert(key, value); },
+                    Some(mut right) => unsafe { right.as_mut().insert(key, value) },
                     None => {
                         self.right = NonNull::new(Box::into_raw(Node::new(key, value)));
                         None
@@ -52,6 +52,7 @@ impl<K: Ord, V: Copy> Node<K, V> {
     }
 }
 
+#[allow(clippy::trivially_copy_pass_by_ref)]
 fn search<'n, K: Ord, V: Copy>(node: &'n NonNull<Node<K, V>>, key: &K) -> Option<&'n V> {
     unsafe { node.as_ref().search(key) }
 }
