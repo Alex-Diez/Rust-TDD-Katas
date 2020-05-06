@@ -1,0 +1,9 @@
+[package]
+name = "calculator_ast_kata"
+version = "0.1.0"
+authors = ["Alex Dukhno <alex.dukhno@icloud.com>"]
+edition = "2018"
+workspace = ".."
+
+[lib]
+name = "calculator_ast_kata"

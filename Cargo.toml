@@ -5,4 +5,5 @@ members = [
     "safe_deque_kata",
     "unsafe_deque_kata",
     "binary_tree_kata",
+    "calculator_ast_kata",
 ]
