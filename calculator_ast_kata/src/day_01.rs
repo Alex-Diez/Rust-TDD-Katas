@@ -23,7 +23,7 @@ impl Ast {
             chars.next();
         }
         f64::from_str(num.as_str())
-            .map(|num| Ast::Number(num))
+            .map(Ast::Number)
             .map_err(|_| ParseAstError)
     }
 }
