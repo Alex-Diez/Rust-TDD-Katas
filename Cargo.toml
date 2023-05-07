@@ -1,9 +1,4 @@
 [workspace]
 members = [
-    "linked_stack_kata",
-    "persistent_list_kata",
-    "safe_deque_kata",
-    "unsafe_deque_kata",
-    "binary_tree_kata",
-    "calculator_ast_kata",
+    "bad_stack"
 ]
