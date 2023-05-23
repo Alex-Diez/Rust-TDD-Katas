@@ -1,4 +1,5 @@
 [workspace]
 members = [
-    "stack"
+    "stack",
+    "persistent_list"
 ]

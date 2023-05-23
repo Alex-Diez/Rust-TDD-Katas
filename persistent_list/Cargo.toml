@@ -1,0 +1,10 @@
+[package]
+name = "persistent_list"
+version = "0.1.0"
+edition = "2021"
+authors = ["Oleksandr Dukhno <alex.dukhno@icloud.com>"]
+
+[lib]
+name = "persistent_list"
+
+[dependencies]
